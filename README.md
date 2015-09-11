@@ -4,7 +4,7 @@
 
 python製のbrainfuckインタプリタです。
 
-python brainfuck.py ファイル名 ステップの有無
+python brainfuck.py ファイル名 ステップの有無(0または指定しない:なし,1:あり)
 
 ステップは処理を一回ずつ進めることができ、エンターで進めます。
 
