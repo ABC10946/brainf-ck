@@ -1,5 +1,4 @@
 import sys
-import curses
 
 def bf_interpreter(script,step=0):
     output = []
