@@ -24,15 +24,15 @@ def bf_interpreter(script,step=0):
             p += 1
             if p > 32:
                 print "error out of memory!"
-                break
                 error_flag = 1
+                break
 
         elif _script[sc] == "<":
             p -= 1
             if p < 0:
                 print "error out of memory!"
-                break
                 error_flag = 1
+                break
 
         elif _script[sc] == "[":
             LFF += 1
@@ -76,7 +76,7 @@ def bf_interpreter(script,step=0):
             print " "*(sc-1)+"^"
             raw_input()
 
-    if error_flag != 0:
+    if error_flag == 0:
         print "".join(output)
 
 if __name__ == "__main__":
