@@ -10,6 +10,7 @@ def bf_interpreter(script,step=0):
     memory = [0 for x in range(32)]
     p = 0
     count = 0
+    error_flag = 0
 
     while _script[sc] != "E":
         count += 1
@@ -24,12 +25,14 @@ def bf_interpreter(script,step=0):
             if p > 32:
                 print "error out of memory!"
                 break
+                error_flag = 1
 
         elif _script[sc] == "<":
             p -= 1
             if p < 0:
                 print "error out of memory!"
                 break
+                error_flag = 1
 
         elif _script[sc] == "[":
             LFF += 1
@@ -73,7 +76,8 @@ def bf_interpreter(script,step=0):
             print " "*(sc-1)+"^"
             raw_input()
 
-    print "".join(output)
+    if error_flag != 0:
+        print "".join(output)
 
 if __name__ == "__main__":
     try:
