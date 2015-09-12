@@ -6,12 +6,13 @@ def bf_interpreter(script,step=0):
 
     LFF = 0 #Loop Fold Flag
     LFL = 0 #Loop Fold Location
-
     sc = 0 #script counter
     memory = [0 for x in range(32)]
     p = 0
+    count = 0
 
     while _script[sc] != "E":
+        count += 1
         if _script[sc] == "+":
             memory[p] += 1
 
@@ -47,14 +48,26 @@ def bf_interpreter(script,step=0):
             output.append(chr(memory[p]))
 
         elif _script[sc] == ",":
-            memory[p] = input()
+            memory[p] = input("input:")
 
         sc += 1
 
         if step != 1:
             pass
-        else:
+        else: #step mode
+            print "counter:",count
             print memory
+            if p == 0:
+                print " ^"
+            elif p == memory[len(memory)-1]:
+                s_memory = map(str,memory)
+                print " "*(len(", ".join(s_memory))-1)+"^"
+            else:
+                s_memory = map(str,memory[0:p+1])
+                print " "*(len(", ".join(s_memory)))+"^"
+
+
+
             print script
             print " "*(sc-1)+"^"
             raw_input()
