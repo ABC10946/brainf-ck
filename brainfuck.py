@@ -41,7 +41,9 @@ def bf_interpreter(script,step=0):
                 LFF -= 1
 
         elif _script[sc] == ".":
-            print chr(memory[p])
+            if step == 1:
+                print chr(memory[p])
+
             output.append(chr(memory[p]))
 
         elif _script[sc] == ",":
@@ -65,7 +67,6 @@ if __name__ == "__main__":
         bfIO = open(file_name)
         script = bfIO.read()
         script = script.replace("\n","")
-        print script
         if len(sys.argv) == 3:
             step = int(sys.argv[2])
             bf_interpreter(script,step)
