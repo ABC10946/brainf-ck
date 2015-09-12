@@ -43,7 +43,7 @@ def bf_interpreter(script,step=0):
 
         elif _script[sc] == ".":
             if step == 1:
-                print chr(memory[p])
+                print "output:",chr(memory[p])
 
             output.append(chr(memory[p]))
 
@@ -56,8 +56,9 @@ def bf_interpreter(script,step=0):
             pass
         else: #step mode
             print "counter:",count
+            print "memory"
             print memory
-            if p == 0:
+            if p == 0: #memory cursor
                 print " ^"
             elif p == memory[len(memory)-1]:
                 s_memory = map(str,memory)
@@ -66,8 +67,8 @@ def bf_interpreter(script,step=0):
                 s_memory = map(str,memory[0:p+1])
                 print " "*(len(", ".join(s_memory)))+"^"
 
-
-
+            #script cursor
+            print "script"
             print script
             print " "*(sc-1)+"^"
             raw_input()
