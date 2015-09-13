@@ -22,7 +22,7 @@ def bf_interpreter(script,step=0):
 
         elif _script[sc] == ">":
             p += 1
-            if p > 32:
+            if p > 31:
                 print "error out of memory!"
                 error_flag = 1
                 break
@@ -80,7 +80,7 @@ def bf_interpreter(script,step=0):
         print "".join(output)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
+    if len(sys.argv) >= 2:
         try:
             file_name = sys.argv[1]
             bfIO = open(file_name)
