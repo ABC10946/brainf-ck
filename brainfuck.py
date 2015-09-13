@@ -18,7 +18,8 @@ def bf_interpreter(script,step=0):
             memory[p] += 1
 
         elif _script[sc] == "-":
-            memory[p] -= 1
+            if memory[p] != 0:
+                memory[p] -= 1
 
         elif _script[sc] == ">":
             p += 1
