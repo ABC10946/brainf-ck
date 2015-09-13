@@ -80,15 +80,18 @@ def bf_interpreter(script,step=0):
         print "".join(output)
 
 if __name__ == "__main__":
-    try:
-        file_name = sys.argv[1]
-        bfIO = open(file_name)
-        script = bfIO.read()
-        script = script.replace("\n","")
-        if len(sys.argv) == 3:
-            step = int(sys.argv[2])
-            bf_interpreter(script,step)
-        else:
-            bf_interpreter(script)
-    except IOError:
-        print "file not found!"
+    if len(sys.argv) == 2:
+        try:
+            file_name = sys.argv[1]
+            bfIO = open(file_name)
+            script = bfIO.read()
+            script = script.replace("\n","")
+            if len(sys.argv) == 3:
+                step = int(sys.argv[2])
+                bf_interpreter(script,step)
+            else:
+                bf_interpreter(script)
+        except IOError:
+            print "file not found!"
+    else:
+        print "error file undefined!"
