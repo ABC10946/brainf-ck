@@ -5,7 +5,7 @@ def bf_interpreter(script,step=0):
     _script = script + "E" #add char that tell finish script
 
     LFF = 0 #Loop Fold Flag
-    LFL = 0 #Loop Fold Location
+    LFL_stack = [] #Loop Fold Location stack
     sc = 0 #script counter
     memory = [0 for x in range(32)]
     p = 0
@@ -37,13 +37,14 @@ def bf_interpreter(script,step=0):
 
         elif _script[sc] == "[":
             LFF += 1
-            LFL = sc
+            LFL_stack.append(sc)
 
         elif _script[sc] == "]":
             if memory[p] != 0:
-                sc = LFL
+                sc = LFL_stack[-1]
             else:
                 LFF -= 1
+                LFL_stack.pop(-1)
 
         elif _script[sc] == ".":
             if step == 1:
