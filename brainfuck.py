@@ -1,6 +1,7 @@
 import sys
 
-def bf_interpreter(script,step=0):
+def bf_interpreter(script,mode=0):
+    #mode 0 is default mode,1 is step mode,2 is output immediately
     output = []
     _script = script + "E" #add char that tell finish script
 
@@ -47,19 +48,34 @@ def bf_interpreter(script,step=0):
                 LFL_stack.pop(-1)
 
         elif _script[sc] == ".":
-            if step == 1:
+            if mode == 1 or mode == 2:
                 print "output:",chr(memory[p])
+
 
             output.append(chr(memory[p]))
 
         elif _script[sc] == ",":
-            memory[p] = input("input:")
+            try:
+                memory[p] = input("input:")
+            except EOFError:
+                print ""
+                break
+            except KeyboardInterrupt:
+                print ""
+                break
+
+        else:
+            print "error \""+script[sc]+"\" command is undefined."
+            error_flag = 1
+            break
 
         sc += 1
 
-        if step != 1:
+        if mode == 0: #default mode
             pass
-        else: #step mode
+        elif mode == 2: #output immediately
+            pass
+        elif mode == 1: #step mode
             print "counter:",count
             print "memory"
             print memory
@@ -76,7 +92,19 @@ def bf_interpreter(script,step=0):
             print "script"
             print script
             print " "*(sc-1)+"^"
-            raw_input()
+            try:
+                raw_input()
+            except EOFError:
+                print ""
+                break
+            except KeyboardInterrupt:
+                print ""
+                break
+
+        else:
+            print "error mode is undefined."
+            error_flag = 1
+            break
 
     if error_flag == 0:
         print "".join(output)
@@ -89,10 +117,11 @@ if __name__ == "__main__":
             script = bfIO.read()
             script = script.replace("\n","")
             if len(sys.argv) == 3:
-                step = int(sys.argv[2])
-                bf_interpreter(script,step)
+                mode = int(sys.argv[2])
+                bf_interpreter(script,mode)
             else:
                 bf_interpreter(script)
+
         except IOError:
             print "file not found!"
     else:
