@@ -1,6 +1,6 @@
-#Brainfuck Interpreter
+# Brainfuck Interpreter
 
-##brainfuck.py
+## brainfuck.py
 
 python製のbrainfuckインタプリタです。
 
@@ -8,13 +8,13 @@ python brainfuck.py ファイル名 モード選択(0または指定なし:デ�
 
 ステップは処理を一回ずつ進めることができ、エンターで進めます。
 
-##test.bf
+## test.bf
 
 brainfuckのテスト用コードです。
 
 「Hello, world!」と出力します。
 
-##使用例
+## 使用例
 
 実行コマンド
 ```
@@ -26,7 +26,7 @@ brainfuckプログラム
 +++++++++[>++++++++>+++++++++++>+++++<<<-]>.>++.+++++++..+++.>-.------------.<++++++++.--------.+++.------.--------.>+.
 ```
 
-##ステップモードの見方
+## ステップモードの見方
 
 ```
 python brainfuck.py test.bf 1
