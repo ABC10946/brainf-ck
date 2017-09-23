@@ -93,7 +93,7 @@ def bf_interpreter(script,mode=0):
             print(script)
             print(" "*(sc-1)+"^")
             try:
-                raw_input()
+                input("Enter to next step")
             except EOFError:
                 print("")
                 break
